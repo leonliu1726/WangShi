@@ -15,15 +15,22 @@
     root.setAttribute("data-theme", next); set("ws-theme", next);
   });
 
-  // 字号：16–24px
+  // 字号：17–28px，两个按钮一大一小
+  var SIZES = [17, 20, 23, 26, 28];
   var fs = parseInt(get("ws-fs") || "", 10);
   if (fs) root.style.setProperty("--fs", fs + "px");
-  var fBtn = document.getElementById("fontsize");
-  if (fBtn) fBtn.addEventListener("click", function () {
-    var cur = parseInt(getComputedStyle(root).getPropertyValue("--fs"), 10) || 19;
-    var next = cur >= 23 ? 17 : cur + 2;
+  function step(d) {
+    var cur = parseInt(getComputedStyle(root).getPropertyValue("--fs"), 10) || 20;
+    var i = SIZES.indexOf(cur); if (i < 0) i = 1;
+    var next = SIZES[Math.max(0, Math.min(SIZES.length - 1, i + d))];
     root.style.setProperty("--fs", next + "px"); set("ws-fs", String(next));
-  });
+    var up = document.getElementById("fs-up"), dn = document.getElementById("fs-down");
+    if (up) up.disabled = next === SIZES[SIZES.length - 1];
+    if (dn) dn.disabled = next === SIZES[0];
+  }
+  var upB = document.getElementById("fs-up"), dnB = document.getElementById("fs-down");
+  if (upB) upB.addEventListener("click", function () { step(1); });
+  if (dnB) dnB.addEventListener("click", function () { step(-1); });
 
   // 目录抽屉
   var drawer = document.getElementById("drawer");

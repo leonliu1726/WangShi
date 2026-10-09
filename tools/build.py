@@ -37,6 +37,8 @@ for k in ("1", "2"):
 _c = Image.open(f"{ART}/00_封面_1.png").convert("RGB").crop((112, 1072, 1488, 2067))
 _c.save(f"{OUT}/img/hero.webp", "WEBP", quality=82, method=6)
 hero_size = _c.size
+# 主屏幕图标：朱印“老建”
+shutil.copy(f"{HERE}/static/icon.png", f"{OUT}/img/icon.png")
 # 社交分享图
 Image.open(f"{ART}/00_封面_1.png").convert("RGB").resize((800, 1200)).save(f"{OUT}/img/og.jpg", quality=82)
 
@@ -69,7 +71,11 @@ def head(title, desc):
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
-<meta property="og:image" content="img/og.jpg">
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="往事 · 老建回忆录">
+<meta property="og:image" content="https://leonliu1726.github.io/WangShi/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="img/icon.png">
 <meta name="theme-color" content="#f4eee2">
 <link rel="icon" href="{FAVICON}">
 {FONTS}
@@ -95,7 +101,8 @@ def bar(where):
     return f"""<header class="bar">
 <a class="brand" href="index.html" aria-label="回到封面"><span class="seal"><i>老</i><i>建</i></span><b>往事</b></a>
 <span class="where">{esc(where)}</span>
-<button id="fontsize" title="调整字号">字号</button>
+<button id="fs-down" aria-label="字变小">字小</button>
+<button id="fs-up" aria-label="字变大">字大</button>
 <button id="theme" title="切换夜读">夜读</button>
 <button data-open-toc>目录</button>
 <div class="progress"></div>
