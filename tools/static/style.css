@@ -170,7 +170,7 @@ figure.plate .frame { background: var(--plate-bg); padding: 8px; box-shadow: var
 figure.plate img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 @media (max-width: 1000px) { figure.plate { margin-left: -16px; margin-right: -16px; } figure.plate .frame { padding: 0; box-shadow: none; } }
 figcaption { margin-top: 12px; font-size: .82em; line-height: 1.8; color: var(--muted); text-align: center; padding: 0 16px; }
-figcaption q { quotes: "“" "”"; }
+figcaption q { quotes: "「" "」"; }
 figure.photo { text-align: center; }
 figure.photo .frame { display: inline-block; background: #fbf8f1; padding: 10px 10px 12px; box-shadow: var(--shadow); max-width: min(100%, 360px); }
 figure.photo.wide .frame { max-width: min(100%, 460px); }
