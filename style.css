@@ -213,3 +213,10 @@ footer.site a { text-decoration: none; border-bottom: 1px dotted var(--muted); }
   body { background: #fff; color: #000; font-size: 12pt; }
   figure.plate { margin-left: 0; margin-right: 0; }
 }
+
+/* 阅读控件：小屏换行、目录定位与减少动态效果 */
+.bar { flex-wrap: wrap; }
+.bar button, .bar a.btn { min-height: 44px; }
+.drawer nav { overscroll-behavior: contain; padding-top: max(24px, env(safe-area-inset-top)); padding-bottom: max(48px, env(safe-area-inset-bottom)); }
+[id] { scroll-margin-top: 90px; }
+@media (prefers-reduced-motion: reduce) { .progress { transition: none; } }
